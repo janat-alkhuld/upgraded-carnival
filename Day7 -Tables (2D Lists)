@@ -1,0 +1,82 @@
+###PYTHON SET, READING/WRITING FILES, and TABLES (2D lISTS)###
+x = [[1,2,3],
+     [4,5,6]]
+
+for i in x[0]:
+    print(i, end = " ")#prints the first Row
+print("\n")
+
+for i in x:
+    print(i[0],end = " ") #prints the first column
+print("\n")
+
+#prints the entire list
+for i in range (len(x)): #outer loop for the rows
+    for j in range (len(x)+1): #inner loop for the columns
+        print (x[i][j], end = " ")
+    print (" ") #prints starting in a new line with every row
+
+#display [[1, 1, 1], [2, 2, 2], [3, 3, 3]]
+    
+b = [[i]*3 for i in range(3)]
+i = 1
+
+for i in range (3): #row
+    for j in range (3): #col
+        b[i][j] = i +1 
+        
+    print(b[i][j], end="")
+    print()
+
+##write a program where the user determines th number of rows and columns then
+##take input from the user for each row and column as a 2D List,
+##finally print the tabe of the 2D list
+row = int(input("Enter the number of rows you want: "))
+col = int(input("Enter the number of columns you want: "))
+b = []
+
+for i in range (row): #row
+    print("enter your row: ")
+    rows = [] 
+    for j in range (col): #col
+        rows.append(int(input()))
+    b.append(rows)
+    print(b[i][j], end="")
+print()
+
+##write a 2D list [[1 0 0 0],[2 1 0 0], [2 2 1 0],[2 2 2 1]]
+row = 4
+col = 4
+b = [[i]*row for i in range(row)]
+i= 0
+j =0
+
+for i in range (row): #row
+    for j in range(col):
+        if [i] == [j]:
+            b[i][j] = 1
+        elif [i] < [j]:
+            b[i][j] = 0
+        elif [i] > [j]:
+            b[i][j] = 2
+            
+for i in range (row): ##Print the output
+    for j in range (col):
+        print(b[i][j], end= " ")
+    print()
+
+
+##write a 2D list [[1 0 0 0],[0 1 0 1], [1 0 1 0],[0 1 0 1]]
+n = 4
+
+b = [[0]*n for i in range(n)]
+
+for i in range (n): #row
+    for j in range(n):
+        if (i+j)%2 == 0:
+            b[i][j] = 1
+            
+for i in range (n): ##Print the output
+    for j in range (n):
+        print(b[i][j], end= " ")
+    print()
