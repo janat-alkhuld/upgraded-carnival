@@ -1,0 +1,41 @@
+###ACCESSING FILES (READING, WRITING)###
+##READING:
+input_file = open("test.txt", "r") #opening the file, "r" is the mode cosen to read from the file
+
+print(input_file.read())
+
+input_file.close()#closing the file
+
+for line in input_file: ##to read the content of every line in the file
+    print(line)
+##WRITING:
+input_file = open("test.txt", "r") #opening the file, "w" is the mode cosen to read from the file
+
+input_file.write("Hello There!") #to write into the file while removing the content of the previously occupying the file
+
+input_file.close()#closing the file
+
+##EXC:1##
+inputFile = open('salary.txt', "r")
+data=[]
+highest = {}
+salary = 0.0
+i=0
+
+for line in inputFile:
+    data = line.split(" ")
+        
+    salary = salary + float (data[0])
+    highest[data[i].rstrip()] = data [0]
+    i = i+1
+    avg = salary/i
+h=[]
+for k,v in highest.items():
+    h.append(k)
+for k, v in highest.items():
+        if v == max(h):
+            print (k,v)
+        
+
+
+inputFile = close()
