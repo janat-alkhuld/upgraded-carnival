@@ -1,0 +1,262 @@
+###OOP###
+class Person:
+    no_of_persons = 0 #to calculate the number of ojects from this class
+    def __init__(self, name, age): #Initilising the class attributes through ___init__
+        self.name = name
+        self.age = age
+        Person.no_of_persons +=1 
+        
+    def Description(self):
+        return f"This person's name is {self.name} and their age is {self.age} y/o"
+    
+    def set_age(self):
+        self.age = new_age
+        
+p1= Person("Joe",24) #creating an objet of Person class, if we tried to print it it would display its memeory address
+print (p1)
+
+p2= Person("Nate",21)
+print (p2)
+
+#print (p1.Description())
+print (p2.Description())
+print(Person.no_of_persons) ##displays the number of objects created from class 'Person'
+
+p1.age = 25 ##changing the value of the attribute 'age' of 'p1' opposes the encapsulation of methods can be countered with getters and setters method
+print(p1.Description())
+##Counter methd after defining the new function 'set_age'
+p2.age(23)
+##Changing the instances (types of instances: public [can be changed by anyone], protected [can be changed within the objects of the same package], private[can only be used by objects in the same class]
+##to set an instance to 'private' we add '__' before the name of the instance
+class Person:
+    no_of_persons = 0 #to calculate the number of ojects from this class
+    def __init__(self, name, age): #Initilising the class attributes through ___init__
+        self.name = name
+        self.__age = age
+        Person.no_of_persons +=1 
+        
+    def Description(self):
+        return f"This person's name is {self.name} and their age is {self.age} y/o"
+    
+    def set_age(self):
+        self.__age = new_age
+        
+p1= Person("Joe",24) 
+print (p1)
+
+p2= Person("Nate",21)
+print (p2)
+
+
+print (p2.Description())
+print(Person.no_of_persons) 
+
+p1.age = 25 ##changing the value of the attribute 'age' of 'p1' opposes the encapsulation of methods can be countered with getters and setters method
+print(p1.Description())
+###############################
+class Employee:
+    no_of_employees = 0 #to calculate the number of ojects from this class
+    def __init__(self, emp_id, name, emp_salary, emp_dept): #Initilising the class attributes through ___init__
+        self.name = name
+        self.emp_id = emp_id
+        self.emp_salary = emp_salary
+        self.emp_dept = emp_dept
+        Employee.no_of_employees +=1 
+        
+    def calculate_emp_salary(self, salary, hrs):
+        if hrs >50:
+            overtime = hrs - 50
+            overtime_amount = (overtime *(salary/50))
+            print(f"({self.name} worked overtime")
+        return salary, hrs
+    
+    def emp_assign_dept(self,dept):
+        print(f"This employee is called {self.name} and his department has been changed to",dept, "department")
+        return dept
+    
+    def print_emp_details(self):
+        return f"This employee is called {self.name} and his employee ID is {self.emp_id}, his salary is {self.emp_salary} and he is in the {self.emp_dept} department"
+        
+emp1= Employee("ADAMS","E7876",50000, "ACCOUNTING") 
+emp2= Employee("JONES","E7499",50000, "RESEARCH")
+emp3= Employee("MARTIN","E7900",45000, "SALES")
+emp4= Employee("SMITH","E7698",55000, "OPERATIONS")
+
+print(emp1.calculate_emp_salary(50000,60))
+print(emp2.print_emp_details())
+emp3.emp_assign_dept("IT")
+##########################################################################
+class Person:
+    def __init__(self, name, age, address, hours): 
+        self.name = name
+        self.age = age
+        self.address = address
+        self.hours = hours
+        
+    def class_type(self):
+        return "This is the parent class"
+    
+class Student(Person):
+    def __init__(self, name, age, address, hours, grades):
+        self.grades = grades
+    def class_type(self):
+        return "This is the Student class"
+    
+class Teacher(Person):
+    def __init__(self,name, age, address, hours, salary ):
+        self.salary = salary
+    def class_type(self):
+        return "This is the Teacher class"
+    
+s1 = Student("Salim", 23, "MUSCAT",45, [3.1, 2.5, 3.0])
+p1 = Person("Salim", 23, "MUSCAT",45)
+
+print (p1.class_type())
+print (s1.class_type())
+
+print(type(s1))
+
+##############################################################
+from datetime import date
+
+class Person:
+    def __init__(self, name, age, address, hours): 
+        self.name = name
+        self.age = age
+        self.address = address
+        self.hours = hours
+        
+    def class_type(self):
+        return "This is the parent class"
+    
+class Student(Person):
+    def __init__(self, name, age, address, hours, grades):
+        self.grades = grades
+    def class_type(self):
+        return "This is the Student class"
+    
+    @classmethod ##using it to change  between age to birthyear which will return the age later
+    def new_students(cls, name, birth_year, address, hours, grades):
+        return cls(name, date.today()-birth_year,  address, hours, grades)
+    
+class Teacher(Person):
+    def __init__(self,name, age, address, hours, salary ):
+        self.salary = salary
+    def class_type(self):
+        return "This is the Teacher class"
+    
+s1 = Student("Salim", 23, "MUSCAT",45, [3.1, 2.5, 3.0])
+p1 = Person("Salim", 23, "MUSCAT",45)
+
+print (p1.class_type())
+print (s1.class_type())
+
+s3 = Student("Ali", 1998, "MUSCAT",45, [3.1, 2.5, 3.0])
+print (s3.new_students("Ali", 1998, "MUSCAT",45, [3.1, 2.5, 3.0]))
+
+print(type(s1))
+
+#######################################Write python class program for a restaurant
+class Restaurant:
+    def __init__(self):
+        self.menu_items = {}
+        self.book_table = []
+        self.customer_orders = []
+
+    def add_item_to_menu(self, item, price):
+        self.menu_items[item] = price
+
+    def book_tables(self, table_number):
+        self.book_table.append(table_number)
+
+    def customer_order(self, table_number, order):
+        order_details = {'table_number': table_number, 'order': order}
+        self.customer_orders.append(order_details)
+
+    def print_menu_items(self):
+        for item, price in self.menu_items.items():
+            print("{}: {}".format(item, price))
+
+    def print_table_reservations(self):
+        for table in self.book_table:
+            print("Table {}".format(table))
+
+    def print_customer_orders(self):
+        for order in self.customer_orders:
+            print("Table {}: {}".format(order['table_number'], order['order']))
+
+restaurant = Restaurant()
+
+# Add items
+restaurant.add_item_to_menu("Cheeseburger", 9.99)
+restaurant.add_item_to_menu("Caesar Salad", 8)
+restaurant.add_item_to_menu("Grilled Salmon", 19.99)
+restaurant.add_item_to_menu("French Fries", 3.99)
+restaurant.add_item_to_menu("Fish & Chips:", 15)
+# Book table
+restaurant.book_tables(1)
+restaurant.book_tables(2)
+restaurant.book_tables(3)
+# Order items
+restaurant.customer_order(1, "Cheeseburger")
+restaurant.customer_order(1, "Grilled Salmon")
+restaurant.customer_order(2, "Fish & Chips")
+restaurant.customer_order(2, "Grilled Salmon")
+
+print("\nPopular dishes in the restaurant along with their prices:")
+restaurant.print_menu_items()
+print("\nTable reserved in the Restaurant:")
+restaurant.print_table_reservations()
+print("\nPrint customer orders:")
+restaurant.print_customer_orders()
+
+################################Write python class program for a bank accountclass BankAccount:
+class BankAccount:
+    def __init__(self, account_number, date_of_opening, balance, customer_name):
+        self.account_number = account_number
+        self.date_of_opening  = date_of_opening 
+        self.balance = balance
+        self.customer_name = customer_name
+        
+    def deposit(self, amount):
+        self.balance += amount
+        print(f"{amount} OMR has been deposited into your acc.")
+    
+    def withdraw(self, amount):
+        if amount > self.balance:
+            print("Insufficient funds.")
+        else:
+            self.balance -= amount
+            print(f"{amount} OMR has been withdrawn from your acc.")
+            
+    def check_balance(self):
+        print(f"Your current balance is {self.balance} OMR.")
+        
+    def print_customer_details(self):
+        print("Name:", self.customer_name)
+        print("Account Number:", self.account_number)
+        print("Date of opening:", self.date_of_opening)
+        print(f"Balance: {self.balance} OMR\n")   
+
+# Input customer details
+acc1 = BankAccount(290696, "29-06-1996", 3000, "Muataz")
+acc2 = BankAccount(220865, "12-05-1993", 1500, "Hanan")
+acc3 = BankAccount(40566, "05-08-1992", 2000, "Musallam")
+
+
+print("Customer Details:")
+acc1.print_customer_details()
+acc2.print_customer_details()
+acc3.print_customer_details()
+
+
+
+acc2.deposit(5000)
+acc2.check_balance()
+acc3.withdraw(3000)
+acc3.check_balance()
+acc3.withdraw(400)
+acc3.check_balance()
+
+
+###########################
