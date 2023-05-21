@@ -1,0 +1,26 @@
+###EXCEPTION HANDLING###
+#Type Error:
+try:
+    input_file = open("test.txt", "r") #opening the file, "r" is the mode cosen to read from the file
+    a = int(input_file)
+    print(a.read())
+    
+except IOError:
+    print("Error: file not found.")
+except TypeError as exception : ##due to str and int data types
+    print("Error:", str(exception))
+finally:
+    input_file.close()#closing the file
+    
+#IO Error:
+    try:
+    input_file = open("tet.txt", "r") #opening the file, "r" is the mode cosen to read from the file
+    print(input_file.read())
+    
+except IOError:
+    print("Error: file not found.")
+except TypeError as exception :
+    print("Error:", str(exception))
+finally:
+    input_file.close()#closing the file
+
