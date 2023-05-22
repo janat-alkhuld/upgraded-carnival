@@ -1,0 +1,30 @@
+####DATA STRUCTURE: STACK####
+class Stack:
+    def __init__(self):
+        self.a = []
+           
+    def PUSH(self,stack):
+        self.a.append(stack)
+        
+    def POP (self):
+        peek = self.a[-1]
+        self.a.remove(peek)
+        return peek
+        
+
+
+stack = Stack()
+string = input("Enter any text you want to reverse: ")
+
+for i in string:
+    stack.PUSH(i)
+    
+print("The stack contains \n",stack.a)
+print("The Reverse of the stack is:")
+
+for i in range(len(stack.a)):
+    print(stack.POP(), end="")
+
+    
+
+
