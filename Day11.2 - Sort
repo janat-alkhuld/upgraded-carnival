@@ -42,9 +42,12 @@ def insertionSort(arr):
             j = j -1
         
         list1 [j+1] = key
-    print("The sorted list:", arr)
+    print("The full sorted list:", arr)
     
 list1 = ["SAID,25","MAJID,19","SALIM,32","ALI,21","SULTAN,28"]
+print("The unsorted list:", list1)
 
-print("The unsorted list:", list1)    
 insertionSort(list1)
+
+final_list = [item.split(',', 1)[0] for item in list1]
+print("The list of names in acsending order:", final_list)
