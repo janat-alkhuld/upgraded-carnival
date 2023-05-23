@@ -1,0 +1,50 @@
+###SORT###
+##Insertion Sort##
+list1 = [18,2,26,7,69,15,6,5,35,27,9]
+print("The unsorted list:", list1)
+for step in range (1,len(list1)):
+    key = list1[step]
+    j = step -1
+    
+    while j >=0 and key <list1[j]:
+        list1 [j+1] = list1[j]
+        j = j -1
+        
+    list1 [j+1] = key
+    
+print("The sorted list:", list1)
+
+##Insertion Sort##
+def insertionSort(arr):    
+    for step in range (1,len(list1)):
+        key = list1[step]
+        j = step -1
+    
+        while j >=0 and key <list1[j]:
+            list1 [j+1] = list1[j]
+            j = j -1
+        
+        list1 [j+1] = key
+    print("The sorted list:", arr)
+    
+list1 = [18,2,26,7,69,15,6,5,35,27,9]
+print("The unsorted list:", list1)    
+insertionSort(list1)
+
+##sort the given list of names and ages to display the age with names in descending order
+def insertionSort(arr):    
+    for step in range (1,len(list1)):
+        key = list1[step]
+        j = step -1
+    
+        while j >=0 and key.split(',', 1)[1] <list1[j].split(',', 1)[1]:
+            list1 [j+1] = list1[j]
+            j = j -1
+        
+        list1 [j+1] = key
+    print("The sorted list:", arr)
+    
+list1 = ["SAID,25","MAJID,19","SALIM,32","ALI,21","SULTAN,28"]
+
+print("The unsorted list:", list1)    
+insertionSort(list1)
