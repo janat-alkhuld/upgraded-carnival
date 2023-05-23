@@ -1,0 +1,45 @@
+###Searching algorithms###
+##Binary search on s sorted list##
+list1 =[2,6,7,9,15,18,26,27,35,69]
+print(list1)
+key= input("Enter the element you want to find from the list above:")
+n = len(list1)
+LI = 0
+HI = n -1
+print("Searching for:",key)
+while LI <= HI:
+    mid = (LI+HI)//2
+    
+    if list1[mid] == key:
+        print("Success;",key, "has been found.")
+        
+    elif key < list1[mid]:
+        HI = mid -1
+        
+    else:
+        LI = mid +1
+print("Failure; Could not find",key)
+
+##given a non negative integer'x' compute and return the square root of 'x'. Without using sqrt()
+list1 =[2.0,6.0,7.0,9.0,15.0,18.0,26.0,27.0,35.0,69.0]
+print(list1)
+x= float(input("Enter the element you want to find teh square root of from the list above:"))
+key = x**0.5
+n = len(list1)
+LI = 0
+HI = n -1
+print("Searching for:",key)
+while LI <= HI:
+    mid = (LI+HI)//2
+    
+    if list1[mid] == key:
+        print("Success;",key, "has been found.")
+        break
+    elif key < list1[mid]:
+        HI = mid -1
+        
+    elif key > list1[mid]:
+        LI = mid +1 
+    else:
+        print("Failure; Could not find",key)
+        break
