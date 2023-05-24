@@ -1,0 +1,20 @@
+###LAMBDA FUNCTION###
+##Lambda used to convert C degrees to F degrees
+cel_to_feh = lambda x : (x*9/5)+32
+print (cel_to_feh(30))
+
+##Lambda used to add x to 2
+mth = lambda x :(x+2)
+x = int(input("input the value of x:"))
+print (mth(x))
+
+##Sort the list of dictionaries by age using lambda function
+People = [{'Name':'John','Age':28},
+          {'Name':'Mary','Age':23},
+          {'Name':'Bob','Age':35},
+          {'Name':'Alice','Age':32}]
+
+print("The Unsorted dictionary is: ", People)
+
+print("The Sorted dictionary is: ")
+print(sorted(People, key=lambda i: i['Age']))
