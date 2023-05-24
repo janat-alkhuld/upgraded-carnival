@@ -1,0 +1,54 @@
+###FILTER() FUNCTION###
+##using filter() with lambda to seperate the postive and negative numbers
+nums = [-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5]
+
+pos_list = list(filter(lambda x: x>=0, nums))
+neg_list = list(filter(lambda x: x<0, nums))
+
+print("Full Numbers list: ",nums)
+print("Positive Numbers list: ",pos_list)
+print("Negative Numbers list: ",neg_list)
+
+##Filter lowercase from uppercase
+text = "hElLo tHerE fRiEnD"
+
+up_list = list(filter(lambda x:x.isupper(),text))
+low_list = list(filter(lambda x: x.islower(),text))
+
+print("Full Numbers list: ",text)
+print("Positive Numbers list: ",up_list)
+print("Negative Numbers list: ",low_list)
+
+#Another list
+text = ["hello", "THERE", "friend"]
+
+up_list = list(filter(lambda x:x.isupper(),text))
+low_list = list(filter(lambda x: x.islower(),text))
+
+print("Full Numbers list: ",text)
+print("Capital-case Letters list: ",up_list)
+print("Lower-case Letters list: ",low_list)
+
+###MAP() FUNCTION###
+##using map() to convert the user input of a list of names seperated by commas to upper case 
+n = int(input("Enter the number of names you want to insert: "))
+names = []
+
+for i in range (n):
+    name = input("Enter the name: ")
+    names.append(name)
+
+print("The list of names inserted is:", names)
+
+upper = list(map(lambda x:x.upper() , names))
+print("The list of names in uppercase is:",upper)
+
+###REDUCE() FUNCTION###
+##calculate the sum of squares of a list of numbers using reduce()
+from functools import reduce
+
+nums=[2,3,4,5,6]
+sqsum = reduce(lambda x, y: x + y * y, [nums[:1][0]**2] + nums[1:])
+
+print("The list of numbers: ",nums)
+print("The sum of squares: ",sqsum)
