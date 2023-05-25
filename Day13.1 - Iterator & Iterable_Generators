@@ -1,0 +1,70 @@
+###ITERATORS AND ITERABLES###
+##iter() and next()
+##iter() is used instead of the for loop iteration because it takes less memory size print(sys.getsizeof(list1))-> to get the size of elements
+list1 = [1,2,3,4,5] #the size is 120
+value = iter(list1) #Makes the list iterable # the size is 48
+#You can use a for loop to get all the elements printed
+print(next(value)) #next() takes the first element #when the end of list is reached and there is no more data to be returned and the erroe would be StopIteration
+
+###GENERATORS###
+##instead of using return yield is deployed instead 
+def func1():
+    return 1
+def func2():
+    yield 1
+    
+print(func1)
+print(func2) #using yield makes a generator object and to print it next() is used 
+print(next(func2))
+
+##queuing values of func2()
+def func2():
+    yield 1
+    yield 2
+    yield 3
+    yield 4
+    yield 5
+
+#function variable:
+value2 = func2() #creating a variable to create a queue to be used in next() or a for loop to display the elememts of func2() by doing so we conserve space
+print(next(value2))
+#to print all the elements queued up we use a for loop
+for i in value2:
+    print(i)
+
+##Multiple generators can be used at a time to pipeline a series of operations
+def fibonacciSeq(nums):
+    x,y = 0,1
+    for i in range (nums):
+        x,y =y, x+y
+        yield x
+
+def sqr(nums):
+    for num in nums:
+        yield num**2
+        
+def cube(nums):
+    for num in nums:
+        yield num**3
+
+print(sum(cube(sqr(fibonacciSeq(10))))) #sum() is considered an iterable same with min(), max(), etc.
+
+##given a list from 1-15, write a generator function that generates a sequence of even numbers from the list
+def EVEN(lis1):
+    for i in lis1:
+        if i%2 ==0:
+            yield i
+        else:
+            continue
+            
+lis1 = [0,1,2,3,4,5,6,7,8,9,10]
+print("The list provided:", lis1)
+
+iterable = EVEN(lis1) #assigning value to the function object
+print ("The even numbers of the list:")
+
+for i in iterable:
+    print(i)
+
+##
+    
