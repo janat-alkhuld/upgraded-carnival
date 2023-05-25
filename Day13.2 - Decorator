@@ -1,0 +1,47 @@
+###DECORATOR###
+##Using nested functions
+def func1(fun): #Decortaor
+    def wrapper(): #defining the wrapper function
+        print("Hello")
+        fun()
+        print("Welcome")
+    return wrapper
+
+def func2():#To be decorated
+    print("Here")
+
+f = func1(func2) #Decorator call
+f()
+
+##
+def func1(fun): #Decortaor
+    def wrapper(): #defining the wrapper function
+        print("Hello")
+        fun()
+        print("Welcome")
+    return wrapper
+@func1
+def func2():#To be decorated
+    print("Here")
+
+f()
+
+##Decortaor with parameters
+import math
+import time
+
+def calculate_time(func):
+    def wrapper(n):
+        begin = time.time()
+        func(n)
+        end = time.time()
+        print("Time Taken in:", func.__name__,end - begin)
+    
+    return wrapper
+
+@calculate_time
+def factorial(num):
+    time.sleep(2)
+    print(math.factorial(num))
+
+factorial(10)
