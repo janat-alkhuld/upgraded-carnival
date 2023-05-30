@@ -1,0 +1,11 @@
+import math as m
+##Entropy in decision tree
+ele = float(input("Enter the number of elements you have: "))
+
+pos = float(input("Enter the number of positive instances you have: "))
+neg = float(input("Enter the number of negaitive instances you have: "))
+
+
+ent = -(pos/ele)*m.log(pos/ele,2) - (neg/ele)*m.log(neg/ele ,2)
+
+print (f"The entropy of the elements is = {ent}")
