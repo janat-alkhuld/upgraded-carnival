@@ -1,0 +1,14 @@
+a = 5
+b = 7
+(c = a + b)
+(d = a * b)
+
+stdname = c("Joe","Nate")
+stdmark = c(3,5)
+(marksmultip = stdmark * 2)
+
+?mean
+mean(stdmark)
+
+?sd
+sd(stdmark)
