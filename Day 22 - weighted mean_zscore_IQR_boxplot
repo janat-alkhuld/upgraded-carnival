@@ -1,0 +1,27 @@
+#Weighted Mean for cars
+num = c(8,10,12)
+price = c(10000,12000,8000)
+weighted.mean(price, num)
+
+#z-score
+a = c(44,39,22,50,64)
+b = c(22,20,18,30,11)
+
+z_scoresa = (a-mean(a))/sd(a)
+z_scoresb = (b-mean(b))/sd(b)
+
+#measures of position - percentile,IQR, box Plot
+set.seed(123)
+var1 = rnorm (100,5,2)
+var1[3]= var1[3] + 40
+var1[50]= var1[50] - 30
+boxplot(var2, horizontal = TRUE, col = "green")
+fivenum(var1)
+summary(var1)
+
+var2 = rnorm(30,6,9)
+var2[3]= var2[3] + 40
+var2[50]= var2[50] - 30
+boxplot(var2, horizontal = TRUE, col = "cyan", var2[-3])
+fivenum(var2)
+summary(var2)
