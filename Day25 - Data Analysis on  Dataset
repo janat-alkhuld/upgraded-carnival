@@ -1,0 +1,80 @@
+library(readr)
+multiple_sclerosis <- read_csv("multiple_sclerosis.csv")
+View(multiple_sclerosis)
+
+summary(multiple_sclerosis)
+str(multiple_sclerosis) #273 obs. of  20 variables
+
+colx = multiple_sclerosis[,c(2, 3, 4, 14)]
+View(colx)
+
+boxplot(colx$Age,
+         horizontal=TRUE,
+         main = "Age",
+        col="light blue")
+
+boxplot(colx$Gender,
+         horizontal=TRUE,
+         main = "Years Spent in School",
+         col="light green")
+
+boxplot(colx$Age ~ colx$Gender, 
+        horizontal = TRUE,
+        xlab =  c() ,
+        col=c("light blue","light pink")
+        )
+
+plot(colx$Schooling ~ colx$Age,
+     col ="dark green"
+     )
+
+cor(colx$Schooling, colx$Age,use = "complete.obs")
+
+model01 = lm(colx$Schooling ~ colx$Age)
+
+abline(model01, col="red")
+
+
+summary(model01)
+
+par(mfrow = c(2,3))
+
+#Male Dataset
+md = multiple_sclerosis[multiple_sclerosis$Gender == 1, ]
+boxplot(md$Age,~ md$Schooling,
+        horizontal=TRUE,
+        main = "Age",
+        col="light blue")
+
+cor(md$Schooling, md$Age,use = "complete.obs")
+
+model02 = lm(colx$Spinal_Cord_MRI ~ colx$Age)
+
+plot(md$Age ~ md$Spinal_Cord_MRI,
+     col ="yellow"
+)
+
+abline(model02, col="black")
+
+#Female Datset
+fd = multiple_sclerosis[multiple_sclerosis$Gender == 2, ]
+boxplot(fd$Age ~ fd$Schooling,
+        horizontal = TRUE,
+        col="light pink"
+)
+
+cor(fd$Schooling, fd$Age,use = "complete.obs")
+model03 = lm(fd$Schooling ~ fd$Age)
+plot(fd$Age ~ fd$Spinal_Cord_MRI,
+     col ="grey"
+)
+abline(model03, col="red")
+
+par(bg = "light grey")
+
+counts = table(multiple_sclerosis$Initial_Symptom)
+barplot(counts,
+        main = "Initial Symptoms",
+        xlab = "Number of symptoms",
+        col = rainbow(12)
+)
