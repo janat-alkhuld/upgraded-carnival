@@ -1,0 +1,150 @@
+-------------------------------------------------------
+/*CREATION*/
+-------------------------------------------------------
+CREATE DATABASE TMS;
+
+CREATE TABLE COLLEGE
+(Cl_Code CHAR(3),
+Cl_Name VARCHAR(40) CONSTRAINT college_name NOT NULL,
+Cl_Dean VARCHAR(30)
+
+CONSTRAINT college_pk PRIMARY KEY (Cl_Code));
+-----------------------------------------------------
+CREATE TABLE DEPARTMENT(
+Dp_Code CHAR(4) PRIMARY KEY,
+Dp_Name VARCHAR(40) NOT NULL,
+Dp_HoD VARCHAR(30),
+Dp_Col CHAR(3),
+
+CONSTRAINT Dp_Col_fk FOREIGN KEY (Dp_Col) REFERENCES  COLLEGE(Cl_Code)
+);
+-----------------------------------------------------
+CREATE TABLE BOOK (
+  Bk_ID NUMERIC(6) PRIMARY KEY CHECK (Bk_ID > 0),
+  Bk_Title VARCHAR(50) NOT NULL,
+  Bk_Edition NUMERIC(2),
+  Bk_#ofPages NUMERIC(4) CHECK (Bk_#ofPages > 0),
+  Bk_TotalCopies NUMERIC(5),
+  Bk_RemCopies NUMERIC(5)
+);
+-----------------------------------------------------
+CREATE TABLE BOOKTOPIC(
+    Tp_BkID NUMERIC(6),
+    Tp_Desc VARCHAR(30) NOT NULL,
+    FOREIGN KEY (Tp_BkID) REFERENCES BOOK(Bk_ID)
+);
+
+-----------------------------------------------------
+CREATE TABLE BORROWER (
+    Br_ID NUMERIC(6) PRIMARY KEY CHECK (Br_ID > 0),
+    Br_Name VARCHAR(30) NOT NULL,
+    Br_Dept CHAR(4) REFERENCES DEPARTMENT(Dp_Code),
+    Br_Mobile CHAR(8) CHECK (Br_Mobile >= '90000000'),
+    Br_City VARCHAR(20),
+    Br_HouseNo CHAR(4),
+    Br_Type CHAR(1) CHECK (Br_Type IN ('S', 'E')));
+-----------------------------------------------------
+CREATE TABLE EMPLOYEE (
+  Em_ID NUMERIC(6) PRIMARY KEY CHECK (Em_ID > 0),
+  Em_OfficeNum CHAR(4) NOT NULL,
+  Em_ExtNum NUMERIC(4) CHECK (Em_ExtNum > 1000));
+-----------------------------------------------------
+CREATE TABLE STUDENT (
+  St_ID NUMERIC(6) PRIMARY KEY CHECK (St_ID > 0),
+  St_Major CHAR(30),
+  St_Cohort NUMERIC(4) NOT NULL);
+-----------------------------------------------------
+CREATE TABLE COURSE(
+  Cr_Code CHAR(8) PRIMARY KEY,
+  Cr_Title VARCHAR(40) NOT NULL,
+  Cr_CH INT CHECK (Cr_CH > 0),
+  Cr_NumOfSec INT CHECK (Cr_NumOfSec > 0),
+  Cr_Dept CHAR(4),
+  FOREIGN KEY (Cr_Dept) REFERENCES DEPARTMENT(Dp_Code));
+-----------------------------------------------------
+CREATE TABLE LINK (
+  Li_CrCode CHAR(8),
+  Li_BkID NUMERIC(6),
+  Li_usage CHAR(1),
+  FOREIGN KEY (Li_CrCode) REFERENCES COURSE(Cr_Code),
+  FOREIGN KEY (Li_BkID) REFERENCES BOOK(Bk_ID),
+  CHECK (Li_usage IN ('T', 'R')));
+-----------------------------------------------------
+CREATE TABLE REGISTRATION (
+    Re_BrID NUMERIC(6),
+    Re_CrCode CHAR(8),
+    Re_Semester CHAR(6) NOT NULL,
+    FOREIGN KEY (Re_BrID) REFERENCES BORROWER(Br_ID),
+    FOREIGN KEY (Re_CrCode) REFERENCES COURSE(Cr_Code));
+-----------------------------------------------------
+CREATE TABLE ISSUING(
+    is_BrID NUMERIC(6),
+    is_BkID NUMERIC(6),
+    is_DateTaken DATE NOT NULL,
+    is_DateReturn DATE,
+    CONSTRAINT FK_Borrower FOREIGN KEY (is_BrID) REFERENCES BORROWER(Br_ID),
+    CONSTRAINT FK_Book FOREIGN KEY (is_BkID) REFERENCES BOOK(Bk_ID),
+    CONSTRAINT CHK_Dates CHECK (is_DateReturn > is_DateTaken));
+-------------------------------------------------------
+/*INSERTION*/
+-------------------------------------------------------
+INSERT INTO COLLEGE (Cl_Code , Cl_Name, Cl_Dean) VALUES ('COM', 'Economy', 'Prof. Fahim');
+INSERT INTO COLLEGE (Cl_Code , Cl_Name, Cl_Dean) VALUES ('SCI', 'Science' ,'Prof. Salma');
+INSERT INTO COLLEGE (Cl_Code , Cl_Name, Cl_Dean) VALUES ('EDU' ,'Education', 'Dr. Hamad');
+INSERT INTO COLLEGE (Cl_Code , Cl_Name, Cl_Dean) VALUES ('ART' ,'Arts' ,'Dr. Abdullah');
+--------------------------------------------------------
+INSERT INTO DEPARTMENT(Dp_Code, Dp_Name ,Dp_Col ,Dp_HoD) VALUES ('INFS' ,'Information Systems' ,'COM' ,'Dr. Kamla');
+INSERT INTO DEPARTMENT (Dp_Code, Dp_Name ,Dp_Col ,Dp_HoD) VALUES ('COMP' ,'Computer Science' ,'SCI' ,'Dr. Zuhoor');
+INSERT INTO DEPARTMENT (Dp_Code, Dp_Name ,Dp_Col ,Dp_HoD) VALUES ('BIOL' ,'Biology SCI', 'Dr. Othman');
+INSERT INTO DEPARTMENT (Dp_Code, Dp_Name ,Dp_Col ,Dp_HoD) VALUES ('HIST' ,'History' ,'EDU' ,'Dr. Said');
+--------------------------------------------------------
+INSERT INTO BOOK(Bk_ID, Bk_Title, Bk_Edition, Bk_#ofPAges, Bk_TotalCopies, Bk_RemCopies) VALUES (1001, 'Database1', 2 ,450 ,150 ,65);
+INSERT INTO BOOK(Bk_ID, Bk_Title, Bk_Edition, Bk_#ofPAges, Bk_TotalCopies, Bk_RemCopies) VALUES (1002, 'Database2', 3, 300, 100, 100);
+INSERT INTO BOOK(Bk_ID, Bk_Title, Bk_Edition, Bk_#ofPAges, Bk_TotalCopies, Bk_RemCopies) VALUES (2001, 'Intro. to Finanace', 1, 600, 75, 40);
+INSERT INTO BOOK(Bk_ID, Bk_Title, Bk_Edition, Bk_#ofPAges, Bk_TotalCopies, Bk_RemCopies) VALUES (3001, 'Basic Op Mgmt' ,1 ,320 ,100 ,77);
+INSERT INTO BOOK(Bk_ID, Bk_Title, Bk_Edition, Bk_#ofPAges, Bk_TotalCopies, Bk_RemCopies) VALUES (3002 ,'Chemistry Book', 2, 500, 100, 80);
+INSERT INTO BOOK(Bk_ID, Bk_Title, Bk_Edition, Bk_#ofPAges, Bk_TotalCopies, Bk_RemCopies) VALUES (3003, 'Management I', 2, 560, 44, 34);
+INSERT INTO BOOK(Bk_ID, Bk_Title, Bk_Edition, Bk_#ofPAges, Bk_TotalCopies, Bk_RemCopies) VALUES (4001, 'Biology', 1, 345 ,100 ,100);
+--------------------------------------------------------
+INSERT INTO BOOKTOPIC(Tp_Desc, Tp_BkID) VALUES ('Basic DB Skills', 1001);
+INSERT INTO BOOKTOPIC(Tp_Desc, Tp_BkID) VALUES ('ERD', 1001);
+INSERT INTO BOOKTOPIC(Tp_Desc, Tp_BkID) VALUES ('EERD' ,1001);
+INSERT INTO BOOKTOPIC(Tp_Desc, Tp_BkID) VALUES ('SQL', 1002);
+INSERT INTO BOOKTOPIC(Tp_Desc, Tp_BkID) VALUES ('Pl/SQL', 1002);
+------------------------------------------------------------
+INSERT INTO BORROWER(Br_ID, Br_Name, Br_Dept, Br_Mobile, Br_City, Br_HouseNo, Br_Type) VALUES (92120, 'Ali', 'INFS' ,99221133, 'Seeb' ,231, 'S');
+INSERT INTO BORROWER(Br_ID, Br_Name, Br_Dept, Br_Mobile, Br_City, Br_HouseNo, Br_Type) VALUES (10021, 'Said', 'INFS' ,91212129 ,'Seeb' ,100 ,'S');
+INSERT INTO BORROWER(Br_ID, Br_Name, Br_Dept, Br_Mobile, Br_City, Br_HouseNo, Br_Type) VALUES (10023, 'Muna', 'FINA',NULL, 'Barka' ,12 ,'S');
+INSERT INTO BORROWER(Br_ID, Br_Name, Br_Dept, Br_Mobile, Br_City, Br_HouseNo, Br_Type) VALUES (3000, 'Mohammed', 'COMP', 90000009, 'Seeb', 777, 'E');
+INSERT INTO BORROWER(Br_ID, Br_Name, Br_Dept, Br_Mobile, Br_City, Br_HouseNo, Br_Type) VALUES (4000, 'Nasser', 'INFS', 99100199 ,'Sur' ,11, 'E');
+------------------------------------------------------------
+INSERT INTO EMPLOYEE(Em_OfficeNum, Em_ExtNum, Em_ID) VALUES ('12' ,2221, 3000);
+INSERT INTO EMPLOYEE(Em_OfficeNum, Em_ExtNum, Em_ID) VALUES ('15' ,1401 ,4000);
+-----------------------------------------------------------
+INSERT INTO STUDENT(St_Cohort, St_Major, St_ID) VALUES (2015, 'FINA' ,10023);
+INSERT INTO STUDENT(St_Cohort, St_Major, St_ID) VALUES (2015, 'INFS' ,10021);
+INSERT INTO STUDENT(St_Cohort, St_Major, St_ID) VALUES (2012, 'INFS', 92120);
+-----------------------------------------------------------
+INSERT INTO COURSE(Cr_code, Cr_title, Cr_CH, Cr_NumOfSec, Cr_dept) VALUES ('COMP4201' ,'Database1' ,3 ,1 ,'COMP');
+INSERT INTO COURSE(Cr_code, Cr_title, Cr_CH, Cr_NumOfSec, Cr_dept) VALUES ('COMP4202', 'Database2', 3 ,2 ,'COMP');
+INSERT INTO COURSE(Cr_code, Cr_title, Cr_CH, Cr_NumOfSec, Cr_dept) VALUES ('BIOL1000' ,'Intro. To Biology' ,4 ,5 ,'BIOL');
+INSERT INTO COURSE(Cr_code, Cr_title, Cr_CH, Cr_NumOfSec, Cr_dept) VALUES ('CHEM2000',' Advanced Chemistry' ,2 ,2 ,'CHEM');
+------------------------------------------------------------
+INSERT INTO LINK(Li_CrCode, Li_BkID, Li_usage) VALUES ('COMP4201' ,1001 ,'T');
+INSERT INTO LINK(Li_CrCode, Li_BkID, Li_usage) VALUES ('COMP4201' ,1002 ,'R');
+INSERT INTO LINK(Li_CrCode, Li_BkID, Li_usage) VALUES ('COMP4202' ,1002 ,'T');
+INSERT INTO LINK(Li_CrCode, Li_BkID, Li_usage) VALUES ('BIOL1000' ,4001 ,'T');
+INSERT INTO LINK(Li_CrCode, Li_BkID, Li_usage) VALUES ('CHEM2000' ,3002 ,'R');
+-------------------------------------------------------------
+INSERT INTO REGISTRATION(Re_brID, Re_crCode, Re_semester) VALUES (10021 ,'CHEM2000', 'FL2016');
+INSERT INTO REGISTRATION(Re_brID, Re_crCode, Re_semester) VALUES (92120 ,'COMP4202' ,'FL2016');
+INSERT INTO REGISTRATION(Re_brID, Re_crCode, Re_semester) VALUES (92120 ,'BIOL1000' ,'FL2015');
+INSERT INTO REGISTRATION(Re_brID, Re_crCode, Re_semester) VALUES (10021 ,'COMP4202' ,'FL2015');
+INSERT INTO REGISTRATION(Re_brID, Re_crCode, Re_semester) VALUES (92120, 'COMP4201' ,'FL2015');
+--------------------------------------------------------------
+INSERT INTO ISSUING(Is_brID, Is_bkID, Is_DateTaken, is_dateReturn) VALUES (92120 ,1001 ,'01-Sep-2015' ,'30-Oct-2015');
+INSERT INTO ISSUING(Is_brID, Is_bkID, Is_DateTaken, is_dateReturn) VALUES (10021 ,1002 ,'30-Oct-2016',null);
+INSERT INTO ISSUING(Is_brID, Is_bkID, Is_DateTaken, is_dateReturn) VALUES (92120 ,1002, '21-Feb-2015' ,'01-Jan-2016');
+INSERT INTO ISSUING(Is_brID, Is_bkID, Is_DateTaken, is_dateReturn) VALUES (92120 ,3002 ,'30-Mar-2016',NULL);
+INSERT INTO ISSUING(Is_brID, Is_bkID, Is_DateTaken, is_dateReturn) VALUES (10021 ,3002 ,'01-Dec-2014');
+-------------------------------------------------------------
