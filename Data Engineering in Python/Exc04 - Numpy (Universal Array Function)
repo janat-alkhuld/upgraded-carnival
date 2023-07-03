@@ -1,0 +1,136 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[2]:
+
+
+import numpy as np
+
+
+# In[22]:
+
+
+#Create a NumPy array with shape (3,3) and fill it with random numbers. Use the np.exp()function to compute the exponential of each element in the array.
+arr = np.random.rand(3,3)
+print("The Random Array Produced:\n",arr)
+exp_arr1 = np.exp(arr)
+print("The Random Array after exponential of each element is computed:\n",exp_arr1)
+
+
+# In[23]:
+
+
+#Create a NumPy array with shape (4,4) and fill it with random numbers. Use the np.sin() function to compute the sine of each element in the array
+print("The Random Array Produced:\n",arr)
+sin_arr = np.sin(arr)
+print("The Random Array after sine of each element is computed:\n",sin_arr)
+
+
+# In[17]:
+
+
+#Create a NumPy array with shape (5,5) and fill it with random numbers. Use the np.log() function to compute the natural logarithm of each element in the array.
+arr3 = np.random.rand(5,5)
+print("The Random Array Produced:\n",arr3)
+log_arr3 = np.log(arr3)
+print("The Random Array after log of each element is computed:\n",log_arr3)
+
+
+# In[19]:
+
+
+#Create a NumPy array with shape (2,2) and fill it with random numbers. Use the np.sqrt() function to compute the square root of each element in the array
+arr4 = np.random.rand(2,2)
+print("The Random Array Produced:\n",arr4)
+sqt_arr4 = np.sqrt(arr4)
+print("The Random Array after the square root of each element is computed:\n",sqt_arr4)
+
+
+# In[21]:
+
+
+#Create a NumPy array with shape (6,6) and fill it with random numbers. Use the np.floor() function to round down each element in the array to the nearest integer.
+arr5 = np.random.rand(6,6)
+print("The Random Array Produced:\n",arr5)
+round_arr5 = np.floor(arr5)
+print("The Random Array after rounding of each element to the closest integer:\n",round_arr5)
+
+
+# In[25]:
+
+
+#Create a NumPy array with shape (3,3) and fill it with random numbers. Use the np.abs() function to compute the absolute value of each element in the array.
+arr6 = np.random.rand(3,3)
+print("The Random Array Produced:\n",arr6)
+abs_arr6 = np.abs(arr6)
+print("The Random Array after computing the absloute values:\n",abs_arr6)
+
+
+# In[29]:
+
+
+#Create a NumPy array with shape (4,4) and fill it with random numbers. Use the np.power() function to raise each element in the array to the power of 2.
+arr7 = np.random.rand(4,4)
+print("The Random Array Produced:\n",arr7)
+pow_arr7 = np.power(arr7,2)
+print("The Random Array's elements to the power  of 2:\n",pow_arr7)
+
+
+# In[32]:
+
+
+#Create a NumPy array with 5 random integers between 1 and 10. Use the maximum function to find the largest element in the array.
+arr8 = np.random.rand(1,10,5)
+print("The Random Array Produced:\n",arr8)
+max_arr8 = np.max(arr8)
+print("The largest element in the Random Array:\n",max_arr8)
+
+
+# In[34]:
+
+
+#Create a NumPy array with 10 random floating-point numbers between 0 and 1. Use the round function to round each element to the nearest integer.
+arr9 = np.random.rand(10)
+print("The Random Array Produced:\n",arr9)
+round_arr9 = np.round(arr9)
+print("The Random Array Elements after rounding to the closest integer:\n",round_arr9)
+
+
+# In[36]:
+
+
+#Create a NumPy array with 7 random integers between 1 and 100. Use the argmax function to find the index of the largest element in the array
+arr10 = np.random.randint(1,100,7)
+print("The Random Array Prodced:\n",arr10)
+maxin_arr10 = np.argmax(arr10)
+print("The Largest Element's index in the randomly generated array is: \n",maxin_arr10)
+
+
+# In[39]:
+
+
+#Create two NumPy arrays with the same shape, each filled with random integers between 1 and 10. Use the add function to add the two arrays together element-wise.
+arr11_1 = np.random.randint(1,10,5)
+arr11_2 = np.random.randint(1,10,5)
+print("The First Random Array Prodced:\n",arr11_1)
+print("The Second Random Array Prodced:\n",arr11_2)
+add_arr11 = np.add(arr11_1,arr11_2)
+print("The sum of the arrays above is = ",add_arr11)
+
+
+# In[42]:
+
+
+#Create a NumPy array with 12 random integers between 0 and 100. Use the clip function to limit the values in the array to a range between 10 and 90.
+arr12 = np.random.randint(0,100,12)
+print("The Random Array Prodced:\n",arr12)
+limit_arr12 = np.clip(arr12,10,90,out= arr12)
+print("The Random Array with 10-90 range is:\n",arr12)
+
+
+# In[ ]:
+
+
+
+
+
