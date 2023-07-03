@@ -1,0 +1,124 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[1]:
+
+
+import numpy as np #importing numpy library
+
+
+# In[2]:
+
+
+l1 = [1,2,3,4]
+
+
+# In[3]:
+
+
+arr1 = np.array(l1) #turning the list into an array
+
+
+# In[4]:
+
+
+arr1
+
+
+# In[7]:
+
+
+l2 = [11,22,33,44] #this is just a list
+
+
+# In[8]:
+
+
+l_2D = [l1,l2] #Combining the array and list together
+
+
+# In[9]:
+
+
+l_2D
+
+
+# In[10]:
+
+
+array_2D = np.array(l_2D)
+
+
+# In[11]:
+
+
+array_2D
+
+
+# In[12]:
+
+
+array_2D.shape #to check the shape of the array
+
+
+# In[13]:
+
+
+array_2D.dtype #checking the datatype
+
+
+# In[15]:
+
+
+np.zeros(3,'int') #special array, checking without the datatype interference (3 elements, single row)
+
+
+# In[16]:
+
+
+np.ones(3) #special array, checking without the datatype interference (3 elements, single row)
+
+
+# In[17]:
+
+
+np.ones([3,3]) #special array, checking without the datatype interference for 2D arrays (3 elements, 3 rows)
+
+
+# In[20]:
+
+
+np.ones([2,6]) (6 elements, 2 rows)
+
+
+# In[30]:
+
+
+np.zeros(3)
+np.empty(3)
+
+
+# In[27]:
+
+
+np.eye(4) ##Special Array (Identity, nxn) Array A*I=A
+
+
+# In[23]:
+
+
+np.arange(10) #Create Array with range function
+
+
+# In[31]:
+
+
+np.arange(0,50,2) #Array with range function, start, end & increment
+
+
+# In[ ]:
+
+
+
+
+
