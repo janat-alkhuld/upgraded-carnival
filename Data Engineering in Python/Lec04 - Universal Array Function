@@ -1,0 +1,77 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[1]:
+
+
+# Universal functions perform operations on all elements in an array
+import numpy as np
+
+
+# In[2]:
+
+
+arr = np.arange(11)
+arr
+
+
+# In[3]:
+
+
+#Taking Square Roots
+np.sqrt(arr)
+
+
+# In[4]:
+
+
+#Calcualting exponential (e^)
+np.exp(arr)
+
+
+# In[5]:
+
+
+#Random array (normal dist)
+Ran = np.random.randn(10)
+Ran
+
+
+# In[6]:
+
+
+RanA=np.random.randint(5,100,20) # low,high,size
+RanB=np.random.randint(5,100,20) # low,high,size
+print(RanA)
+print(RanB)
+
+
+# In[7]:
+
+
+#Addition
+np.add(RanA,RanB)
+
+
+# In[8]:
+
+
+#Finding the maxium and minimum
+np.maximum(RanA, RanB)
+np.minimum(RanA, RanB)
+
+
+# In[9]:
+
+
+import webbrowser as wb
+site = "https://numpy.org/doc/stable/reference/ufuncs.html"
+wb.open(site)
+
+
+# In[ ]:
+
+
+
+
+
