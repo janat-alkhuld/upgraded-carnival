@@ -1,0 +1,235 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[41]:
+
+
+#Scalar operation
+import numpy as np
+from numpy.linalg import inv
+
+
+# In[4]:
+
+
+#Create a 2x2 NumPy array and multiply it by 2.
+arr1 = np.array([[1,2],[8,9]])
+print("The 2D Array is:\n",arr1)
+print("The product of multiplying the array by 2:\n",arr1*2)
+
+
+# In[6]:
+
+
+#Create a 3x3 NumPy array and add 5 to each element.
+arr2 = np.array([[1,2,3],[8,9,10],[5,6,7]])
+print("The Array is:\n",arr2)
+print("The product of adding 5 to each element is:\n",arr2 +5)
+
+
+# In[8]:
+
+
+#Create a 4x4 NumPy array and subtract 10 from each element.
+arr3 = np.array([[1,2,3,4],[8,9,10,11],[5,6,7,12],[13,14,15,16]])
+print("The Array is:\n",arr3)
+print("The product of subtracting 10 from each element is:\n",arr3 -10)
+
+
+# In[9]:
+
+
+#Create a 5x5 NumPy array and divide each element by 2.
+arr4 = np.array([[1,2,3,4,17],[8,9,10,11,18],[5,6,7,12,19],[13,14,15,16,20]])
+print("The Array is:\n",arr4)
+print("The product of the division of elements by 2 is:\n",arr4 /2)
+
+
+# In[10]:
+
+
+#Create a 6x6 NumPy array and calculate the square root of each element.
+arr5 = np.array([[1,2,3,4,17,21],[8,9,10,11,18,22],[5,6,7,12,19,23],[13,14,15,16,20,24]])
+print("The Array is:\n",arr5)
+print("The Square root of each eleent in the array is:\n",np.sqrt(arr5))
+
+
+# In[11]:
+
+
+#Matrix Product and Multiplication:
+
+
+# In[13]:
+
+
+#Create two 2x2 NumPy arrays and calculate their product using the np.matmul() function
+arr6 = np.array([[1,2],[8,9]])
+print("The Array is:\n",arr6)
+print("The product of the elements of the array:\n",np.matmul(arr6,arr6))
+
+
+# In[14]:
+
+
+#Create two 3x3 NumPy arrays and calculate their product using the np.dot() function.
+arr7 = np.array([[1,2,3],[8,9,10],[5,6,7]])
+print("The Array is:\n",arr7)
+print("The dot product of the array:\n",np.dot(arr7,arr7))
+
+
+# In[16]:
+
+
+#Create a 2x3 NumPy array and a 3x2 NumPy array, and calculate their product using the np.matmul() function
+arr8_1 = np.arange(6).reshape(2,3)
+arr8_2 = np.arange(6).reshape(3,2)
+print("The First Array is:\n",arr8_1)
+print("The Second Array is:\n",arr8_2)
+print("The product of the elements of the array:\n",np.matmul(arr8_1,arr8_2))
+
+
+# In[17]:
+
+
+#Create a 3x2 NumPy array and a 2x3 NumPy array, and calculate their product using the np.dot() function.
+arr9_1 = np.arange(6).reshape(3,2)
+arr9_2 = np.arange(6).reshape(2,3)
+print("The First Array is:\n",arr9_1)
+print("The Second Array is:\n",arr9_2)
+print("The dot product of the elements of the array:\n",np.dot(arr9_1,arr9_2))
+
+
+# In[20]:
+
+
+#Create a 4x4 NumPy array and its transpose using the np.transpose() function, then calculate their product using the np.matmul() function.
+arr10 = np.arange(16).reshape(4,4)
+print("The Array is:\n",arr10)
+trans_arr10 = np.transpose(arr10)
+print("The Transposed Array is:\n",trans_arr10)
+print("The product of the original Array and the transposed is:\n",np.matmul(arr10,trans_arr10))
+
+
+# In[21]:
+
+
+#Transpose:
+
+
+# In[22]:
+
+
+#Create a 2x3 NumPy array and its transpose using the np.transpose() function
+arr11 = np.arange(6).reshape(2,3)
+print("The Array is:\n",arr10)
+print("The Transposed Array is:\n",np.transpose(arr11))
+
+
+# In[26]:
+
+
+#Create a 3x4 NumPy array and its transpose using the np.transpose() function.
+arr12 = np.arange(12).reshape(3,4)
+print("The Array is:\n",arr12)
+print("The Transposed Array is:\n",np.transpose(arr12))
+
+
+# In[27]:
+
+
+#Create a 5x5 NumPy array and its transpose using the np.transpose() function.
+arr13 = np.arange(25).reshape(5,5)
+print("The Array is:\n",arr13)
+print("The Transposed Array is:\n",np.transpose(arr13))
+
+
+# In[29]:
+
+
+#Create a 2x2 NumPy array and its transpose using the np.transpose() function, then calculate the dot product of the two arrays using the np.dot() function.
+arr14 = np.arange(4).reshape(2,2)
+print("The Array is:\n",arr14)
+trans_arr14 = np.transpose(arr14)
+print("The Transposed Array is:\n",trans_arr14)
+print("The dot product of the original Array and the transposed is:\n",np.dot(arr10,trans_arr10))
+
+
+# In[30]:
+
+
+#Dot Product:
+
+
+# In[32]:
+
+
+#Create two 2x2 NumPy arrays and calculate their dot product using the np.dot() function.
+arr15_1 = np.arange(4).reshape(2,2)
+print("The First Array is:\n",arr15_1)
+arr15_2 = np.arange(4).reshape(2,2)
+print("The Second Array is:\n",arr15_2)
+print("The dot product of the two Arrays is:\n",np.dot(arr15_1,arr15_2))
+
+
+# In[33]:
+
+
+#Create two 3x3 NumPy arrays and calculate their dot product using the np.dot() function.
+arr16_1 = np.arange(9).reshape(3,3)
+print("The First Array is:\n",arr16_1)
+arr16_2 = np.arange(9).reshape(3,3)
+print("The Second Array is:\n",arr16_2)
+print("The dot product of the two Arrays is:\n",np.dot(arr16_1,arr16_2))
+
+
+# In[35]:
+
+
+#Create a 2x3 NumPy array and a 3x2 NumPy array, and calculate their dot product using the np.dot() function.
+arr17_1 = np.arange(6).reshape(2,3)
+arr17_2 = np.arange(6).reshape(3,2)
+print("The First Array is:\n",arr17_1)
+print("The Second Array is:\n",arr17_1)
+print("The dot product of the two Arrays is:\n",np.dot(arr17_1,arr17_2))
+
+
+# In[36]:
+
+
+#Create a 3x2 NumPy array and a 2x3 NumPy array, and calculate their dot product using the np.dot() function
+arr18_1 = np.arange(6).reshape(3,2)
+arr18_2 = np.arange(6).reshape(2,3)
+print("The First Array is:\n",arr18_1)
+print("The Second Array is:\n",arr18_1)
+print("The dot product of the two Arrays is:\n",np.dot(arr18_1,arr18_2))
+
+
+# In[38]:
+
+
+#Create a 4x4 NumPy array and its transpose using the np.transpose() function, then calculate their dot product using the np.dot() functionarr19_1 = np.arange(6).reshape(3,2)
+arr19 = np.arange(16).reshape(4,4)
+trans_arr19 = np.transpose(arr19)
+print("The Array is:\n",arr19)
+print("The Transposed Array is:\n",trans_arr19)
+print("The dot product of the two Arrays is:\n",np.dot(arr19,trans_arr19))
+
+
+# In[43]:
+
+
+#Create a 5x5 NumPy array and its transpose using the np.transpose() function, then calculate their dot product using the np.dot() functionarr19_1 = np.arange(6).reshape(3,2)
+arr20 = np.arange(25).reshape(5,5)
+inv_arr20 = np.inv(arr20)
+print("The Array is:\n",arr20)
+print("The Inversed Array is:\n",inv_arr20)
+print("The dot product of the two Arrays is:\n",np.dot(arr20,inv_arr20))
+
+
+# In[ ]:
+
+
+
+
+
